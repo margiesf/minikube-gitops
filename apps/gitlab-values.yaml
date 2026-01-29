@@ -1,0 +1,18 @@
+# gitlab-values.yaml
+global:
+  hosts:
+    domain: minikube.local
+  # turn off heavy extra so RAM not be full 
+  prometheus:
+    install: false
+  gitlab-runner:
+    install: false
+postgresql:
+  install: true 
+redis:
+  install: true 
+gitlab:
+  webservice:
+    replicas: 1 # one copy to be safe with usage
+  sidekiq:
+    replicas: 1
