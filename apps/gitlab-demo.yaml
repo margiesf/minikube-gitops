@@ -10,7 +10,7 @@ spec:
     repoURL: https://charts.gitlab.io/
     targetRevision: 8.x.x # Έκδοση Chart
     helm:
-    valueFiles:
+      valueFiles:
         - gitlab-values.yaml
       parameters:
       - name: global.hosts.domain
