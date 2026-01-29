@@ -8,8 +8,10 @@ spec:
   source:
     chart: gitlab
     repoURL: https://charts.gitlab.io/
-    targetRevision: 8.x.x # Έκδοση του Chart
+    targetRevision: 8.x.x # Έκδοση Chart
     helm:
+    valueFiles:
+        - gitlab-values.yaml
       parameters:
       - name: global.hosts.domain
         value: minikube.local
