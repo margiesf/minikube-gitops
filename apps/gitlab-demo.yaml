@@ -5,22 +5,23 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: gitlab
-    repoURL: https://charts.gitlab.io/
-    targetRevision: 8.1.0 # Chart
-    helm:
-      valueFiles:
-        - gitlab-values.yaml
-      parameters:
-      - name: global.hosts.domain
-        value: minikube.local
+  sources: 
+    - repoURL: 'https://charts.gitlab.io/'
+      chart: gitlab
+      targetRevision: 8.1.0
+      helm:
+        
+        valueFiles:
+          - $values/apps/gitlab-values.yaml
+    - repoURL: 'https://github.com/margiesf/minikube-gitops.git'
+      targetRevision: HEAD
+      ref: values 
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: gitlab-namespace
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
