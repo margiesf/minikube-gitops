@@ -16,3 +16,12 @@ gitlab:
     replicas: 1 # one copy to be safe with usage
   sidekiq:
     replicas: 1
+gitlab:
+  webservice:
+    resources:
+      limits:
+        memory: "512Mi" 
+  sidekiq:
+    resources:
+      limits:
+        memory: "256Mi"
